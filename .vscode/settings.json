@@ -1,0 +1,14 @@
+{
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/build/debug",
+        "--background-index",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--header-insertion-decorators",
+        "--clang-tidy",
+        "-j=8"
+    ],
+    "cmake.buildDirectory": "${workspaceFolder}/build/debug",
+    "cmake.configureOnOpen": true,
+}

@@ -99,12 +99,12 @@ static const KeyEntry s_controlKeys[] = {
     // of modifier keys so we map them to the left handed versions.
     {kKeyShift_L, s_shiftVK},
     {kKeyShift_R, s_shiftVK}, // 60
-    {kKeyControl_L, s_controlVK},
-    {kKeyControl_R, s_controlVK}, // 62
+    {kKeyControl_L, s_superVK},
+    {kKeyControl_R, s_superVK}, // 62
     {kKeyAlt_L, s_altVK},
     {kKeyAlt_R, s_altVK},
-    {kKeySuper_L, s_superVK},
-    {kKeySuper_R, s_superVK}, // 61
+    {kKeySuper_L, s_controlVK},
+    {kKeySuper_R, s_controlVK}, // 61
     {kKeyMeta_L, s_superVK},
     {kKeyMeta_R, s_superVK}, // 61
 
@@ -216,13 +216,13 @@ KeyModifierMask OSXKeyState::mapModifiersFromOSX(uint32_t mask) const
     outMask |= KeyModifierShift;
   }
   if ((mask & kCGEventFlagMaskControl) != 0) {
-    outMask |= KeyModifierControl;
+    outMask |= KeyModifierSuper;
   }
   if ((mask & kCGEventFlagMaskAlternate) != 0) {
     outMask |= KeyModifierAlt;
   }
   if ((mask & kCGEventFlagMaskCommand) != 0) {
-    outMask |= KeyModifierSuper;
+    outMask |= KeyModifierControl;
   }
   if ((mask & kCGEventFlagMaskAlphaShift) != 0) {
     outMask |= KeyModifierCapsLock;
@@ -406,13 +406,13 @@ KeyModifierMask OSXKeyState::pollActiveModifiers() const
     outMask |= KeyModifierShift;
   }
   if ((mask & controlKey) != 0) {
-    outMask |= KeyModifierControl;
+    outMask |= KeyModifierSuper;
   }
   if ((mask & optionKey) != 0) {
     outMask |= KeyModifierAlt;
   }
   if ((mask & cmdKey) != 0) {
-    outMask |= KeyModifierSuper;
+    outMask |= KeyModifierControl;
   }
   if ((mask & alphaLock) != 0) {
     outMask |= KeyModifierCapsLock;
@@ -819,14 +819,14 @@ void OSXKeyState::handleModifierKeys(void *target, KeyModifierMask oldMask, KeyM
   if ((changed & KeyModifierShift) != 0) {
     handleModifierKey(target, s_shiftVK, kKeyShift_L, (newMask & KeyModifierShift) != 0, newMask);
   }
-  if ((changed & KeyModifierControl) != 0) {
-    handleModifierKey(target, s_controlVK, kKeyControl_L, (newMask & KeyModifierControl) != 0, newMask);
+  if ((changed & KeyModifierSuper) != 0) {
+    handleModifierKey(target, s_controlVK, kKeyControl_L, (newMask & KeyModifierSuper) != 0, newMask);
   }
   if ((changed & KeyModifierAlt) != 0) {
     handleModifierKey(target, s_altVK, kKeyAlt_L, (newMask & KeyModifierAlt) != 0, newMask);
   }
-  if ((changed & KeyModifierSuper) != 0) {
-    handleModifierKey(target, s_superVK, kKeySuper_L, (newMask & KeyModifierSuper) != 0, newMask);
+  if ((changed & KeyModifierControl) != 0) {
+    handleModifierKey(target, s_superVK, kKeySuper_L, (newMask & KeyModifierControl) != 0, newMask);
   }
   if ((changed & KeyModifierCapsLock) != 0) {
     handleModifierKey(target, s_capsLockVK, kKeyCapsLock, (newMask & KeyModifierCapsLock) != 0, newMask);

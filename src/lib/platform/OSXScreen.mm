@@ -1685,9 +1685,9 @@ CGEventRef OSXScreen::handleCGInputEvent(CGEventTapProxy proxy, CGEventType type
   }
 
   if (screen->m_isOnScreen) {
-    return event;
+    return event;// 如果鼠标在 Mac 本地屏幕，直接返回原始事件给系统，不做任何篡改。
   } else {
-    return nullptr;
+    return nullptr;// 如果鼠标在客户端屏幕，拦截事件（返回空），并通过网络发送。
   }
 }
 

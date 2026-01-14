@@ -17,7 +17,6 @@ Brewfile.lock.json
 
 # typical developer-created files
 deskflow-config.toml
-.vscode
 .DS_Store
 *.code-workspace
 .env*
@@ -40,8 +39,8 @@ CMakeCache.txt
 CMakeUserPresets.json
 CMakeFiles/*
 
-# vscode folder
-/.vscode
+
+# scripts folder
 
 # scripts folder
 /scripts
