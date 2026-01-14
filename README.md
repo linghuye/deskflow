@@ -4,6 +4,9 @@
   <img alt="Deskflow" src="https://github.com/user-attachments/assets/f005b958-24df-4f4a-9bfd-4f834dae59d6">
 </picture>
 
+MacOS的复制粘贴，用的Command + C，而Windows用的Control + C，两者按键不统一，非常不好用。
+修改Deskflow源码，使得MacOS与Windows之间交换Command和Control按键的定义，这样就能统一使用同一套键盘按键。
+
 **Deskflow** is a free and open source keyboard and mouse sharing app.
 Use the keyboard, mouse, or trackpad of one computer to control nearby computers,
 and work seamlessly between them.
